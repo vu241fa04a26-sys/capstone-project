@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "start:prod": "node index.js",
-    "build": "cd client && npm install && npm run build"
+    "build": "cd client && npm install && npm run build",
+    "presentation": "node scripts/generate-presentation.js"
   },
   "author": "vishnu",
   "license": "MIT",
@@ -18,6 +19,7 @@
     "password-generator": "^2.2.0"
   },
   "devDependencies": {
+    "pptxgenjs": "^4.0.1",
     "prettier": "^1.18.2"
   }
 }

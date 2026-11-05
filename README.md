@@ -1,6 +1,12 @@
 # MERN Stack Project
 
-A lightweight, minimal setup for the MERN (MongoDB, Express, React, and Node.js) stack.
+A focused single-user task planner built with MongoDB, Express, React, and Node.js.
+
+## Project resources
+
+- [Project guide](docs/PROJECT_GUIDE.md): architecture, setup, data model, API, and verification notes.
+- [Capstone presentation](docs/Daymark-Capstone-Overview.pptx): editable project overview deck.
+- Generate the presentation again with `npm run presentation`.
 
 ## Architecture
 
@@ -68,3 +74,8 @@ npm run start:prod
 ```
 
 The application will be served at [http://localhost:5000](http://localhost:5000).
+
+## Project documentation
+
+See [docs/PROJECT_GUIDE.md](docs/PROJECT_GUIDE.md) for the architecture, API contract, data model,
+local setup, and known limitations.
