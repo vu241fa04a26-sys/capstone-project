@@ -1,6 +1,6 @@
 {
-  "short_name": "simple-mern",
-  "name": "simple-mern",
+  "short_name": "Daymark",
+  "name": "Daymark Tasks",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#f2f4ef",
+  "background_color": "#f2f4ef"
 }

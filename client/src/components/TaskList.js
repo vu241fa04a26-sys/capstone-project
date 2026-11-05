@@ -1,45 +1,43 @@
-import React from 'react';
+import React from "react";
 
-const TaskList = ({ tasks, updateTasks }) => {
-  const clickDeleteTask = (event, task) => {
-    event.preventDefault();
-
-    fetch(`/api/tasks/delete/${task._id}`, {
-      method: 'delete',
-    })
-      .then(res => res.json())
-      .then(() => updateTasks());
-  };
-
-  const toggleDone = task => {
-    fetch(`/api/tasks/update/${task._id}`, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ done: !task.done }),
-    }).then(() => updateTasks());
-  };
-
+const TaskList = ({ tasks, busyTaskId, onToggle, onDelete }) => {
   return (
     <ul className="tasks">
-      {tasks.map(task => (
-        <li key={task._id}>
-          <label className={task.done ? 'done' : ''}>
+      {tasks.map((task) => (
+        <li
+          key={task._id}
+          className={task.done ? "task-row is-done" : "task-row"}
+        >
+          <label className="task-label">
             <input
+              className="task-check-input"
               type="checkbox"
               checked={task.done}
-              onChange={() => toggleDone(task)}
-            />{' '}
-            {task.title}
-            <svg
-              onClick={event => clickDeleteTask(event, task)}
-              className="delete-button"
-              width="16"
-              height="16"
-              viewBox="0 0 12 16"
-            >
-              <path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path>
-            </svg>
+              disabled={Boolean(busyTaskId) && busyTaskId === task._id}
+              onChange={() => onToggle(task)}
+            />{" "}
+            <span className="task-checkbox" aria-hidden="true">
+              <svg viewBox="0 0 16 16">
+                <path d="m3.5 8.2 3 3 6-6" />
+              </svg>
+            </span>
+            <span className="task-title">{task.title}</span>
           </label>
+          <div className="task-actions">
+            {task.done && <span className="done-label">Done</span>}
+            <button
+              type="button"
+              className="delete-button"
+              aria-label={`Delete ${task.title}`}
+              title="Delete task"
+              disabled={Boolean(busyTaskId) && busyTaskId === task._id}
+              onClick={() => onDelete(task)}
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4.5 6h11M8 6V4.5h4V6m2.5 0-.7 9H6.2l-.7-9m3 2.5v4m3-4v4" />
+              </svg>
+            </button>
+          </div>
         </li>
       ))}
     </ul>
